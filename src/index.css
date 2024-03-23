@@ -1,3 +1,5 @@
+/* Improve readability and organization with comments */
+/* Reset default margin, padding, and font */
 body {
   background-color: #f0f0f2;
   margin: 0;
@@ -6,6 +8,7 @@ body {
     "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/* Center the content and add spacing */
 #root > div {
   width: 800px;
   margin: 5em auto;
@@ -19,6 +22,7 @@ body {
   align-items: center;
 }
 
+/* Set background color for canvas and add margin */
 canvas {
   background: #f0f0f2;
   margin: 1rem 0;

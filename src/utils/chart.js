@@ -17,29 +17,26 @@ export function addPoint(canvas, prevPrice, price) {
   let prevX = prevPrice.ticks * timeScale + 4;
   let x = price.ticks * timeScale;
 
-  // scrollin
+  // Scroll the chart if the point is out of view
   if (x + 4 > width) {
-    shiftLeft(ctx, 15);
-    x = width - 15;
+    shiftLeft(ctx, timeScale);
+    x = width - timeScale;
     prevX = x - 11;
   }
 
-  if (prevPrice.value > price.value) {
-    ctx.fillStyle = "red";
-    ctx.strokeStyle = "red";
-  } else if (prevPrice.value < price.value) {
-    ctx.fillStyle = "green";
-    ctx.strokeStyle = "green";
-  } else {
-    ctx.fillStyle = "black";
-    ctx.strokeStyle = "black";
-  }
+  // Determine the color based on price change
+  const color = prevPrice.value > price.value ? "red" : prevPrice.value < price.value ? "green" : "black";
+  
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
 
+  // Draw the line connecting previous and current points
   ctx.beginPath();
   ctx.moveTo(prevX, prevY);
   ctx.lineTo(x, y);
   ctx.stroke();
 
+  // Draw the current point
   ctx.beginPath();
   ctx.arc(x, y, 4, 0, Math.PI * 2);
   ctx.fill();

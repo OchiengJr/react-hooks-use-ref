@@ -14,8 +14,8 @@ function Ticker() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      setPrice((price) => ({
-        ticks: price.ticks + 1,
+      setPrice((prevPrice) => ({
+        ticks: prevPrice.ticks + 1,
         value: makeRandomNumber(),
       }));
     }, 1000);
@@ -37,9 +37,10 @@ function Ticker() {
     <div>
       <h1>TickerChart</h1>
       <canvas ref={canvasRef} width={600} height={400} />
-      <h2 style={{ color: color }}>Price: ${price.value}</h2>
+      <h2 style={{ color }}>Price: ${price.value}</h2>
     </div>
   );
 }
 
 export default Ticker;
+

@@ -1,17 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 function CounterRef() {
-  const count = useRef(0);
+  const [count, setCount] = useState(0);
 
-  function handleClick() {
-    count.current = count.current + 1;
-    console.log(count.current);
-  }
+  const handleClick = () => {
+    setCount(prevCount => prevCount + 1);
+  };
 
   return (
     <div>
       <h1>CounterRef</h1>
-      <button onClick={handleClick}>{count.current}</button>
+      <button onClick={handleClick}>{count}</button>
     </div>
   );
 }
